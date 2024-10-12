@@ -1,18 +1,23 @@
 import { useState } from "react";
 
-const initialItems = [
-  { id: 1, description: "Passports", quantity: 2, packed: false },
-  { id: 2, description: "Socks", quantity: 12, packed: true },
-];
+// const initialItems = [
+//   { id: 1, description: "Passports", quantity: 2, packed: false },
+//   { id: 2, description: "Socks", quantity: 12, packed: true },
+// ];
 
 function App() {
   const [items, setItems] = useState([]);
+
+  function handleDeleteItem(id) {
+    const newItems = [...items];
+    setItems(newItems.filter((item) => item.id !== id));
+  }
 
   return (
     <div className="app">
       <Logo />
       <Form setItems={setItems} />
-      <PackingList items={items} />
+      <PackingList onHnadleDelete={handleDeleteItem} items={items} />
       <Stats />
     </div>
   );
@@ -33,7 +38,7 @@ function Form({ setItems }) {
     e.preventDefault();
 
     if (!description) return;
-    const newItem = { description, quantity, packed: false };
+    const newItem = { description, quantity, packed: false, id: Date.now() };
     handleAddItems(newItem);
     setDescription("");
     setQuantity(1);
@@ -61,25 +66,25 @@ function Form({ setItems }) {
     </form>
   );
 }
-function PackingList({ items }) {
+function PackingList({ onHnadleDelete, items }) {
   return (
     <div className="list">
       <ul>
         {items.map((item) => {
-          return <Item key={item.id} item={item} />;
+          return <Item key={item.id} item={item} onHnadleDelete={onHnadleDelete} />;
         })}
       </ul>
     </div>
   );
 }
 
-function Item({ item }) {
+function Item({ item, onHnadleDelete }) {
   return (
     <li>
       <span style={item.packed ? { textDecoration: "line-through", opacity: 0.5 } : {}}>
         {item.description} {item.quantity}
       </span>
-      <button>❌</button>
+      <button onClick={() => onHnadleDelete(item.id)}>❌</button>
     </li>
   );
 }
