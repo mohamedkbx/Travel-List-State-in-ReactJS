@@ -13,7 +13,7 @@ Welcome to the Travel List project! This application helps you manage and organi
 
 ## Resources
 
-- HAndle Events With React Way : https://chatgpt.com/share/670d5449-3fd8-800f-94c7-f5d63874a139
+- Handle Events With React Way : https://chatgpt.com/share/670d5449-3fd8-800f-94c7-f5d63874a139
 
 ## Installation
 
