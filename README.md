@@ -11,6 +11,10 @@ Welcome to the Travel List project! This application helps you manage and organi
 - Sort items by name or date
 - Calculate the number of items packed or not packed
 
+## Resources
+
+- HAndle Events With React Way : https://chatgpt.com/share/670d5449-3fd8-800f-94c7-f5d63874a139
+
 ## Installation
 
 1. Clone the repository:
