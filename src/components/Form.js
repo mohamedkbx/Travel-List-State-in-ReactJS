@@ -3,6 +3,7 @@ import { useState } from "react";
 export default function Form({ setItems }) {
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState(1);
+
   function handleAddItems(item) {
     setItems((items) => [...items, item]);
   }
